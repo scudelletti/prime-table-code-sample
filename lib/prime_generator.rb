@@ -9,30 +9,34 @@ class PrimeGenerator
 
   def initialize(number_of_primes)
     @number_of_primes = number_of_primes
-    @accumulator = []
+    @prime_bucket  = []
     @current_number = 2
   end
 
   def generate
-    while accumulator.size != number_of_primes
-      accumulator << current_number if prime?
+    while !prime_bucket_full?
+      prime_bucket << current_number if prime?
       next_number
     end
 
-    accumulator
+    prime_bucket
   end
 
   private
 
-  attr_accessor :number_of_primes, :accumulator, :current_number
+  attr_accessor :number_of_primes, :prime_bucket, :current_number
 
   def prime?
-    (STARTER_NUMBER...current_number).none? do |n|
-      current_number % n == 0
+    (STARTER_NUMBER...current_number).none? do |number|
+      current_number % number == 0
     end
   end
 
   def next_number
     self.current_number = current_number.next
+  end
+
+  def prime_bucket_full?
+    prime_bucket.size >= number_of_primes
   end
 end
