@@ -5,14 +5,6 @@ class PrimeGenerator
     new(number_of_primes).generate
   end
 
-  private_class_method :new
-
-  def initialize(number_of_primes)
-    @number_of_primes = number_of_primes
-    @prime_bucket  = []
-    @current_number = 2
-  end
-
   def generate
     while !prime_bucket_full?
       prime_bucket << current_number if prime?
@@ -25,6 +17,14 @@ class PrimeGenerator
   private
 
   attr_accessor :number_of_primes, :prime_bucket, :current_number
+
+  private_class_method :new
+
+  def initialize(number_of_primes)
+    @number_of_primes = number_of_primes
+    @prime_bucket  = []
+    @current_number = 2
+  end
 
   def prime?
     (STARTER_NUMBER...current_number).none? do |number|
