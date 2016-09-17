@@ -23,7 +23,7 @@ class PrimeGenerator
   def initialize(number_of_primes)
     @number_of_primes = number_of_primes
     @prime_bucket  = []
-    @current_number = 2
+    @current_number = STARTER_NUMBER
   end
 
   def prime?
