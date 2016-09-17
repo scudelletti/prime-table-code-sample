@@ -31,5 +31,13 @@ describe RowGenerator do
         is_expected.to eq([5,10,15,20,25])
       end
     end
+
+    describe "row size" do
+      subject { super().size }
+
+      it "has the same amount of items as the vector" do
+        is_expected.to eq(vector.size)
+      end
+    end
   end
 end
