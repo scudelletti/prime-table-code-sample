@@ -9,9 +9,10 @@ describe PrimeTableGenerator do
 
     it "returns matrix with all multiplied primes" do
       is_expected.to eq([
-        [4,6,10],
-        [6,9,15],
-        [10,15,25],
+        ["X",2,3,5],
+        [2,4,6,10],
+        [3,6,9,15],
+        [5,10,15,25],
       ])
     end
   end

@@ -7,11 +7,12 @@ describe TableGenerator do
   describe "#generate" do
     subject { table_generator.generate }
 
-    it "returns matrix with multiplied values" do
+    it "returns matrix with multiplied values and headers" do
       is_expected.to eq([
-        [1,2,3],
-        [2,4,6],
-        [3,6,9]
+        ["X",1,2,3],
+        [1,1,2,3],
+        [2,2,4,6],
+        [3,3,6,9]
       ])
     end
 
@@ -19,16 +20,16 @@ describe TableGenerator do
       context "rows size" do
         subject { super().size }
 
-        it "has the same amount of items as the vector" do
-          is_expected.to eq(3)
+        it "has the same amount of items as the vector plus header" do
+          is_expected.to eq(vector.size + 1)
         end
       end
 
       context "columns size" do
         subject { super().first.size }
 
-        it "has the same amount of columns as the vector" do
-          is_expected.to eq(3)
+        it "has the same amount of columns as the vector plus header" do
+          is_expected.to eq(4)
         end
       end
     end
